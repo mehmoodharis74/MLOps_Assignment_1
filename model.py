@@ -9,7 +9,7 @@ from tensorflow.keras.layers import LSTM, Dense
 from sklearn.model_selection import train_test_split
 
 # Defining the stock values and downloading data from yahoo finance
-stock_symbol = "BTC-USD"
+stock_symbol = "ETH-USD"
 start_date = "2023-01-01"
 end_date = "2024-01-01"
 data = yf.download(stock_symbol, start=start_date, end=end_date)
