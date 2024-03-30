@@ -16,11 +16,12 @@ print(data)
 
 # Data Preprocessing using MinMaxScaler
 def preprocess_data(data):
+    
     scaler = MinMaxScaler()
     scaled_data = scaler.fit_transform(data[['Close']].values)
 
-
     return scaled_data, scaler
+
 
 scaled_data, data_scaler = preprocess_data(data)
 
@@ -42,7 +43,8 @@ X, y = create_sequences(scaled_data, sequence_length)
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, shuffle=False)
 
-# Model Building using Long Short Term Memory for hidden and Hyperparameter Tuning
+# Model Building using Long Short Term 
+#Memory for hidden and Hyperparameter Tuning
 model = Sequential()
 model.add(LSTM(units=128, activation='tanh', input_shape=(sequence_length, 1)))
 model.add(Dense(32, activation='linear'))
