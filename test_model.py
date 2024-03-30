@@ -9,9 +9,9 @@ def test_lstm_model():
     model = load_model('predictor.h5')
 
     # Load and preprocess the test data
-    stock_symbol = "BTC-USD"
-    start_date = "2024-01-01"
-    end_date = "2024-02-01"
+    stock_symbol = "ETH-USD"
+    start_date = "2023-01-01"
+    end_date = "2024-01-01"
     data = yf.download(stock_symbol, start=start_date, end=end_date)
 
     def preprocess_data(data):
