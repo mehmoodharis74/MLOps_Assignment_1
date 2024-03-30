@@ -20,10 +20,10 @@ pipeline {
     }
 
     post {
-        always {
-            // Clean up Docker images
-            sh 'docker system prune -af'
-        }
+        // always {
+        //     // Clean up Docker images
+        //     sh 'docker system prune -af'
+        // }
         success {
             echo 'Pipeline Success'
             mail bcc: '', body: "<br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "Success CI: Project name -> ${env.JOB_NAME}", to: "mehmoodharis74@gmail.com";
