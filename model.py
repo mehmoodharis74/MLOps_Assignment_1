@@ -14,10 +14,9 @@ data = yf.download(stock_symbol, start=start_date, end=end_date)
 
 print(data)
 
+
 # Data Preprocessing using MinMaxScaler
 def preprocess_data(data):
-    
-    
     scaler = MinMaxScaler()
     scaled_data = scaler.fit_transform(data[['Close']].values)
 
