@@ -16,21 +16,24 @@ def test_lstm_model():
 
     def preprocess_data(data):
         scaler = MinMaxScaler()
-        scaled_data = scaler.fit_transform(data.values)
+        scaled_data = scaler.fit_transform(data[['Close']].values)
         return scaled_data, scaler
 
     scaled_data, data_scaler = preprocess_data(data)
 
     sequence_length = 20
 
-    # Create sequences
+    # Sequence-to-Sequence Transformation
     def create_sequences(data, sequence_length):
-        X = []
+
+        X, y = [], []
         for i in range(len(data) - sequence_length):
             X.append(data[i:i+sequence_length])
-        return np.array(X)
+            y.append(data[i+sequence_length])
+        return np.array(X), np.array(y)
 
-    X_test = create_sequences(scaled_data, sequence_length)
+
+    X_test, y_test = create_sequences(scaled_data, sequence_length)
 
     # Predict
     y_pred = model.predict(X_test)
