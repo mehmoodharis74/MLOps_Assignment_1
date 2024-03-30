@@ -1,9 +1,7 @@
 import yfinance as yf
 import numpy as np
-import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import mean_squared_error
-import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import LSTM, Dense
 from sklearn.model_selection import train_test_split
@@ -21,23 +19,28 @@ def preprocess_data(data):
     scaler = MinMaxScaler()
     scaled_data = scaler.fit_transform(data[['Close']].values)
 
+
     return scaled_data, scaler
 
 scaled_data, data_scaler = preprocess_data(data)
 
+
 # Sequence-to-Sequence Transformation
 def create_sequences(data, sequence_length):
+
     X, y = [], []
     for i in range(len(data) - sequence_length):
         X.append(data[i:i+sequence_length])
         y.append(data[i+sequence_length])
     return np.array(X), np.array(y)
 
+
 sequence_length = 20
 X, y = create_sequences(scaled_data, sequence_length)
 
 # Split the Data
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, shuffle=False)
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, shuffle=False)
 
 # Model Building using Long Short Term Memory for hidden and Hyperparameter Tuning
 model = Sequential()
