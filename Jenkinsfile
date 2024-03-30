@@ -1,42 +1,28 @@
 pipeline {
-    environment {
-        registry = "mehmoodharis74/MLOps_Assignment_1"
-        registryCredential = 'dockerhub_id'
-        dockerImage = ''
-    }
-    
     agent any
-    
+
+    environment {
+        DOCKER_IMAGE_NAME = 'mehmoodharis74/MLOps_Assignment_1'
+    }
+
     stages {
-        stage('Cloning our Git') {
-            steps {
-                git 'https://github.com/mehmoodharis74/MLOps_Assignment_1.git'
-            }
-        }
-        
-        stage('Building our image') {
+        stage('Build Docker Image') {
             steps {
                 script {
-                    dockerImage = docker.build(registry + ":$BUILD_NUMBER")
+                    sh "docker build -t $DOCKER_IMAGE_NAME ."
                 }
             }
         }
-        
-        stage('Deploy our image') {
-            steps {
-                script {
-                    docker.withRegistry('', registryCredential) {
-                        dockerImage.push()
-                    }
-                }
-            }
+
+        stage('Login Dockerhub and Push Docker Image') {
+    steps {
+        script {
+            sh "echo 'dockerhub098' | docker login -u 'mehmoodharis74' --password-stdin"
+
+            sh "docker push $DOCKER_IMAGE_NAME"
         }
-        
-        stage('Cleaning up') {
-            steps {
-                sh "docker rmi $registry:$BUILD_NUMBER"
-            }
-        }
+    }
+}
     }
     
     post {
