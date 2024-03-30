@@ -1,4 +1,5 @@
 yfinance
+pytest
 numpy
 pandas
 scikit-learn
