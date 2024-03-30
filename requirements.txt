@@ -1,1 +1,5 @@
 pytest
+yfinance
+numpy
+scikit-learn
+tensorflow
