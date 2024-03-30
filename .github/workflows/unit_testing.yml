@@ -1,7 +1,7 @@
 name: Test LSTM Model on Test Branch
 
 on:
-  push:
+  pull_request:
     branches:
       - test
 
