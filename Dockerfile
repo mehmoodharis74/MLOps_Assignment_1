@@ -4,4 +4,4 @@ WORKDIR /app
 COPY . .
 RUN pip install -r requirements.txt
 EXPOSE 8081
-CMD ["python", "app.py"]
+CMD ["python", "model.py"]
