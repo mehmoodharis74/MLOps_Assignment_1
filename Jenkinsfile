@@ -21,8 +21,8 @@ stage('Push Docker Image'){
 steps{
 script{
 withCredentials([string(credentialsId: 'mehmoodharis74')]) {
-sh ‘docker login -u mehmoodharis74 -p dockerhub098’
-sh ‘docker push mehmoodharis74/MLOps_Assignment_1’
+sh 'docker login -u mehmoodharis74 -p dockerhub098'
+sh 'docker push mehmoodharis74/MLOps_Assignment_1'
 }
 }
 }
