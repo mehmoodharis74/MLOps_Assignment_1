@@ -1,6 +1,6 @@
 pipeline {
     environment {
-        registry = "mehmoodharis74/MLOps_Assignment_1:final"
+        registry = "mehmoodharis74/MLOps_Assignment_1"
         registryCredential = 'dockerhub_id'
         dockerImage = ''
     }
