@@ -56,6 +56,8 @@ epochs = 50
 batch_size = 32
 history = model.fit(X_train, y_train, epochs=epochs, batch_size=batch_size)
 
+model.save('predictor.h5')
+
 # Model Evaluation
 y_pred = model.predict(X_test)
 y_pred = data_scaler.inverse_transform(y_pred)
