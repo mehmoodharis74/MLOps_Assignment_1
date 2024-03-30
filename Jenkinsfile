@@ -19,17 +19,17 @@ pipeline {
     }
 
     post {
-        always {
-            // Clean up Docker images
-            sh 'docker system prune -af'
-        }
+        // always {
+        //     // Clean up Docker images
+        //     sh 'docker system prune -af'
+        // }
         success {
             echo 'Pipeline Success'
-            mail bcc: '', body: "<br>Project: Project Uploaded Successfully", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "Success CI: Project name", to: "mehmoodharis74@gmail.com";
+           // mail bcc: '', body: "<br>Project: Project Uploaded Successfully", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "Success CI: Project name", to: "mehmoodharis74@gmail.com";
         }
         failure {
             echo 'Pipeline Failed'
-            mail bcc: '', body: "<br>Project: Project Uploading Failed", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "ERROR CI: Project name", to: "mehmoodharis74@gmail.com";
+           // mail bcc: '', body: "<br>Project: Project Uploading Failed", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "ERROR CI: Project name", to: "mehmoodharis74@gmail.com";
         }
     }
 }
