@@ -13,6 +13,7 @@ pipeline {
 
                     // // Push Docker image to Docker Hub
                     // sh 'docker push mehmoodharis74/MLOps_Assignment_1'
+                    echo 'Done'
                 }
             }
         }
