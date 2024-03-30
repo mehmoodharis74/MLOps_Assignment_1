@@ -1,0 +1,31 @@
+name: Test LSTM Model on Test Branch
+
+on:
+  pull_request:
+    branches:
+      - test
+
+jobs:
+  test_model:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+
+    - name: Create Model
+      run: |
+        python model.py
+
+    - name: Run pytest
+      run: |
+        pytest
