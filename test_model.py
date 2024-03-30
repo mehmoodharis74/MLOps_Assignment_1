@@ -40,7 +40,7 @@ def test_lstm_model():
     y_pred = data_scaler.inverse_transform(y_pred)
 
     # Calculate Mean Squared Error
-    actual_prices = data['Close'].values[sequence_length:]
+    actual_prices = data_scaler.inverse_transform(y_test)
     mse = mean_squared_error(actual_prices, y_pred)
 
     # Assert the Mean Squared Error is less than a threshold
